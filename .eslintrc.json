@@ -9,5 +9,9 @@
         "sourceType": "module"
     },
     "rules": {
+        "@typescript-eslint/naming-convention": "off",
+        "camelcase": "off",
+        "no-useless-constructor": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off"
     }
 }
