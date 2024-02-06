@@ -11,15 +11,16 @@ datasource db {
 }
 
 model User {
-  id           String @id @default(uuid())
+  id           String   @id @default(uuid())
   name         String
-  email        String @unique
+  email        String   @unique
   password     String
   phone_number String
   street       String
   city         String
   state        String
   zipcode      String
+  created_at   DateTime @default(now())
 
   pets Pet[]
 
@@ -27,14 +28,15 @@ model User {
 }
 
 model Pet {
-  id                 String  @id @default(uuid())
+  id                 String    @id @default(uuid())
   bio                String
   type               String
   age                Int
   energy_level       Int
   independence_level Int
   ambient_type       String
-  is_adopted         Boolean @default(false)
+  adopted_at         DateTime?
+  created_at         DateTime  @default(now())
 
   user_id             String?
   User                User?                 @relation(fields: [user_id], references: [id])
