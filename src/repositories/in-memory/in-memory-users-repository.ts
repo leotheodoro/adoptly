@@ -1,5 +1,8 @@
 import { type Prisma, type User } from '@prisma/client'
-import { type UsersRepository } from '../users-repository'
+import {
+  FindUsersByCityParams,
+  type UsersRepository,
+} from '../users-repository'
 import { randomUUID } from 'node:crypto'
 
 export class InMemoryUsersRepository implements UsersRepository {
@@ -42,5 +45,13 @@ export class InMemoryUsersRepository implements UsersRepository {
     this.users.push(user)
 
     return user
+  }
+
+  async findByCity({ state, city }: FindUsersByCityParams): Promise<User[]> {
+    const users = this.users.filter(
+      (user) => user.city === city && user.state === state,
+    )
+
+    return users
   }
 }

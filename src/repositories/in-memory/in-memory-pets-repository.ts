@@ -1,8 +1,11 @@
 import { Pet, Prisma } from '@prisma/client'
-import { PetsRepository } from '../pets-repository'
+import { FindPetsByCityParams, PetsRepository } from '../pets-repository'
 import { randomUUID } from 'crypto'
+import { UsersRepository } from '../users-repository'
 
 export class InMemoryPetsRepository implements PetsRepository {
+  constructor(private readonly usersRepository: UsersRepository) {}
+
   public pets: Pet[] = []
 
   async create(
@@ -25,5 +28,19 @@ export class InMemoryPetsRepository implements PetsRepository {
     this.pets.push(pet)
 
     return pet
+  }
+
+  async findByCity({ state, city }: FindPetsByCityParams) {
+    const users = await this.usersRepository.findByCity({ state, city })
+    const user_ids = users.map((user) => user.id)
+
+    console.log(user_ids)
+
+    const pets = this.pets.filter((pet) => user_ids.includes(pet.user_id))
+
+    console.log(this.pets)
+    console.log(pets)
+
+    return pets
   }
 }
