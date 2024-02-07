@@ -1,4 +1,4 @@
-import { type PetsRepository } from '@/repositories/ pets-repository'
+import { type PetsRepository } from '@/repositories/pets-repository'
 import { type Pet } from '@prisma/client'
 
 interface CreatePetUseCaseRequest {
@@ -10,6 +10,10 @@ interface CreatePetUseCaseRequest {
   independenceLevel: number
   ambientType: string
   userId: string
+}
+
+interface CreatePetUseCaseResponse {
+  pet: Pet
 }
 
 export class CreatePetUseCase {
@@ -24,7 +28,7 @@ export class CreatePetUseCase {
     independenceLevel,
     ambientType,
     userId,
-  }: CreatePetUseCaseRequest): Promise<Pet> {
+  }: CreatePetUseCaseRequest): Promise<CreatePetUseCaseResponse> {
     const pet = await this.petsRepository.create({
       name,
       bio,
@@ -36,6 +40,6 @@ export class CreatePetUseCase {
       user_id: userId,
     })
 
-    return pet
+    return { pet }
   }
 }
