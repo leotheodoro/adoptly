@@ -22,7 +22,7 @@ describe('Register Use Case', () => {
       state: 'SP',
       street: 'Rua street',
       zipcode: '11111-111',
-      phone_number: '(11) 99999-9999'
+      phone_number: '(11) 99999-9999',
     })
 
     expect(user.id).toEqual(expect.any(String))
@@ -37,13 +37,10 @@ describe('Register Use Case', () => {
       state: 'SP',
       street: 'Rua street',
       zipcode: '11111-111',
-      phone_number: '(11) 99999-9999'
+      phone_number: '(11) 99999-9999',
     })
 
-    const isPasswordCorrectlyHashed = await compare(
-      '123456',
-      user.password
-    )
+    const isPasswordCorrectlyHashed = await compare('123456', user.password)
 
     expect(isPasswordCorrectlyHashed).toBe(true)
   })
@@ -59,20 +56,21 @@ describe('Register Use Case', () => {
       state: 'SP',
       street: 'Rua street',
       zipcode: '11111-111',
-      phone_number: '(11) 99999-9999'
+      phone_number: '(11) 99999-9999',
     })
 
-    await expect(async () =>
-      await sut.execute({
-        email,
-        name: 'John Doe',
-        password: '123456',
-        city: 'São Paulo',
-        state: 'SP',
-        street: 'Rua street',
-        zipcode: '11111-111',
-        phone_number: '(11) 99999-9999'
-      })
+    await expect(
+      async () =>
+        await sut.execute({
+          email,
+          name: 'John Doe',
+          password: '123456',
+          city: 'São Paulo',
+          state: 'SP',
+          street: 'Rua street',
+          zipcode: '11111-111',
+          phone_number: '(11) 99999-9999',
+        }),
     ).rejects.toBeInstanceOf(UserAlreadyExistsError)
   })
 })
