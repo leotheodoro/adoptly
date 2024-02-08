@@ -1,10 +1,10 @@
 import { type PetsRepository } from '@/repositories/pets-repository'
-import { type Pet } from '@prisma/client'
+import { PetType, type Pet } from '@prisma/client'
 
 interface CreatePetUseCaseRequest {
   name: string
   bio?: string
-  type: 'CAT' | 'DOG'
+  type: PetType
   age: number
   energyLevel: number
   independenceLevel: number

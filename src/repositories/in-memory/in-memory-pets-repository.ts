@@ -30,16 +30,33 @@ export class InMemoryPetsRepository implements PetsRepository {
     return pet
   }
 
-  async findByCity({ state, city }: FindPetsByCityParams) {
+  async findByCity({
+    state,
+    city,
+    type,
+    energyLevel,
+    independenceLevel,
+    ambientType,
+  }: FindPetsByCityParams) {
     const users = await this.usersRepository.findByCity({ state, city })
     const user_ids = users.map((user) => user.id)
 
-    console.log(user_ids)
+    const pets = this.pets.filter((pet) => {
+      if (!user_ids.includes(pet.user_id)) return false
 
-    const pets = this.pets.filter((pet) => user_ids.includes(pet.user_id))
+      if (type !== undefined && pet.type !== type) return false
+      if (energyLevel !== undefined && pet.energy_level !== energyLevel)
+        return false
+      if (
+        independenceLevel !== undefined &&
+        pet.independence_level !== independenceLevel
+      )
+        return false
+      if (ambientType !== undefined && pet.ambient_type !== ambientType)
+        return false
 
-    console.log(this.pets)
-    console.log(pets)
+      return true
+    })
 
     return pets
   }

@@ -1,8 +1,12 @@
-import { type Pet, type Prisma } from '@prisma/client'
+import { PetType, type Pet, type Prisma } from '@prisma/client'
 
 export interface FindPetsByCityParams {
   state: string
   city: string
+  type?: PetType
+  energyLevel?: number
+  independenceLevel?: number
+  ambientType?: string
 }
 
 export interface PetsRepository {
