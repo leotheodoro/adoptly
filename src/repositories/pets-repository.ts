@@ -9,8 +9,16 @@ export interface FindPetsByCityParams {
   ambientType?: string
 }
 
+export interface CreateAdoptionRequirementsParams {
+  petId: string
+  requirements: string[]
+}
+
 export interface PetsRepository {
   create: (data: Prisma.PetUncheckedCreateWithoutPetImageInput) => Promise<Pet>
+  createAdoptionRequirements: (
+    data: CreateAdoptionRequirementsParams,
+  ) => Promise<void>
   findByCity: (data: FindPetsByCityParams) => Promise<Pet[]>
-  findById: (id: string) => Promise<Pet | null>
+  findById: (id: string) => Promise<Pet>
 }
