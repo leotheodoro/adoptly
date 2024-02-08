@@ -6,7 +6,7 @@
 - [x] Deve ser possível se cadastrar como uma ONG
 - [x] Deve ser possível realizar login como uma ONG
 - [ ] Deve ser possível fazer upload de imagens para cada pet
-- [ ] Deve ser possível cadastrar um array de requisitos para cada pet
+- [x] Deve ser possível cadastrar um array de requisitos para cada pet
 
 ### Regras de negócio
 - [x] Para listar os pets, obrigatoriamente precisamos informar a cidade
