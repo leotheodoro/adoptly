@@ -7,7 +7,7 @@ interface RegisterUseCaseRequest {
   name: string
   email: string
   password: string
-  phone_number: string
+  phoneNumber: string
   street: string
   city: string
   state: string
@@ -25,7 +25,7 @@ export class RegisterUseCase {
     name,
     email,
     password,
-    phone_number,
+    phoneNumber,
     street,
     city,
     state,
@@ -43,7 +43,7 @@ export class RegisterUseCase {
       name,
       email,
       password: passwordHash,
-      phone_number,
+      phone_number: phoneNumber,
       street,
       city,
       state,
