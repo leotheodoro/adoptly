@@ -13,11 +13,11 @@ interface AuthenticateUseCaseResponse {
 }
 
 export class AuthenticateUseCase {
-  constructor (private readonly usersRepository: UsersRepository) {}
+  constructor(private readonly usersRepository: UsersRepository) {}
 
-  async execute ({
+  async execute({
     email,
-    password
+    password,
   }: AuthenticateUseCaseRequest): Promise<AuthenticateUseCaseResponse> {
     const user = await this.usersRepository.findByEmail(email)
 
@@ -32,7 +32,7 @@ export class AuthenticateUseCase {
     }
 
     return {
-      user
+      user,
     }
   }
 }

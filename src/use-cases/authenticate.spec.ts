@@ -22,23 +22,24 @@ describe('Authenticate Use Case', () => {
       state: 'SP',
       street: 'Rua street',
       zipcode: '11111-111',
-      phone_number: '(11) 99999-9999'
+      phone_number: '(11) 99999-9999',
     })
 
     const { user } = await sut.execute({
       email: 'johndoe@example.com',
-      password: '123456'
+      password: '123456',
     })
 
     expect(user.id).toEqual(expect.any(String))
   })
 
   it('should not be able to authenticate with wrong e-mail', async () => {
-    await expect(async () =>
-      await sut.execute({
-        email: 'johndoe@example.com',
-        password: '123456'
-      })
+    await expect(
+      async () =>
+        await sut.execute({
+          email: 'johndoe@example.com',
+          password: '123456',
+        }),
     ).rejects.toBeInstanceOf(InvalidCredentialsError)
   })
 
@@ -51,14 +52,15 @@ describe('Authenticate Use Case', () => {
       state: 'SP',
       street: 'Rua street',
       zipcode: '11111-111',
-      phone_number: '(11) 99999-9999'
+      phone_number: '(11) 99999-9999',
     })
 
-    await expect(async () =>
-      await sut.execute({
-        email: 'johndoe@example.com',
-        password: 'wrong-password'
-      })
+    await expect(
+      async () =>
+        await sut.execute({
+          email: 'johndoe@example.com',
+          password: 'wrong-password',
+        }),
     ).rejects.toBeInstanceOf(InvalidCredentialsError)
   })
 })
