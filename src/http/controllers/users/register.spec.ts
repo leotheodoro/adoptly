@@ -8,7 +8,7 @@ let server: Server
 
 describe('Register (e2e)', () => {
   beforeAll(() => {
-    server = app.listen(env.TEST_E2E_PORT)
+    server = app.listen(env.PORT)
   })
 
   afterAll(() => {
