@@ -20,5 +20,5 @@ export interface PetsRepository {
     data: CreateAdoptionRequirementsParams,
   ) => Promise<void>
   findByCity: (data: FindPetsByCityParams) => Promise<Pet[]>
-  findById: (id: string) => Promise<Pet>
+  findById: (id: string) => Promise<Pet | null>
 }

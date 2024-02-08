@@ -42,6 +42,10 @@ export class InMemoryPetsRepository implements PetsRepository {
   }: CreateAdoptionRequirementsParams) {
     const pet = await this.findById(petId)
 
+    if (!pet) {
+      throw new ResourceNotFoundError()
+    }
+
     requirements.map((requirement) => {
       return this.adoptionRequirements.push({
         id: randomUUID(),
@@ -84,10 +88,6 @@ export class InMemoryPetsRepository implements PetsRepository {
 
   async findById(id: string) {
     const [pet] = this.pets.filter((pet) => pet.id === id)
-
-    if (!pet) {
-      throw new ResourceNotFoundError()
-    }
 
     return pet
   }
