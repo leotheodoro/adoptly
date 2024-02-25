@@ -15,19 +15,10 @@ export async function create(request: Request, response: Response) {
     energyLevel: z.number(),
     independenceLevel: z.number(),
     ambientType: z.string(),
-    userId: z.string(),
   })
 
-  const {
-    name,
-    bio,
-    type,
-    age,
-    energyLevel,
-    independenceLevel,
-    ambientType,
-    userId,
-  } = createPetBodySchema.parse(request.body)
+  const { name, bio, type, age, energyLevel, independenceLevel, ambientType } =
+    createPetBodySchema.parse(request.body)
 
   try {
     const registersUseCase = makeCreatePetUseCase()
@@ -40,7 +31,7 @@ export async function create(request: Request, response: Response) {
       energyLevel,
       independenceLevel,
       ambientType,
-      userId,
+      userId: request.userId,
     })
 
     return response.status(201).send()
