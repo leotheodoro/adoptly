@@ -3,12 +3,12 @@ import { app } from '@/app'
 import { describe, expect, it } from 'vitest'
 import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-user'
 
-describe('Fetch Pets By City (e2e)', () => {
-  it('should be able to fetch pets by city', async () => {
+describe('Pet Details (e2e)', () => {
+  it('should be able to fetch pet details', async () => {
     const { token } = await createAndAuthenticateUser(app)
 
     const name = 'Pet Name'
-    await request(app)
+    const petCreatedResponse = await request(app)
       .post('/pets')
       .set('Authorization', `Bearer ${token}`)
       .send({
@@ -21,25 +21,12 @@ describe('Fetch Pets By City (e2e)', () => {
         ambientType: 'Indoor',
       })
 
-    await request(app)
-      .post('/pets')
-      .set('Authorization', `Bearer ${token}`)
-      .send({
-        name: 'Pet 2',
-        bio: 'Bio Pet',
-        type: 'DOG',
-        age: 1,
-        energyLevel: 1,
-        independenceLevel: 1,
-        ambientType: 'Indoor',
-      })
+    const petId = petCreatedResponse.body.id
 
-    const response = await request(app).get('/pets').send({
-      state: 'State',
-      city: 'City',
-    })
+    const response = await request(app).get(`/pets/${petId}`)
 
-    expect(response.body.length).toEqual(2)
+    expect(response.body.id).toEqual(petId)
+    expect(response.body.name).toEqual(name)
     expect(response.statusCode).toEqual(200)
   })
 })
