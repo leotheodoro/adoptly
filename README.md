@@ -12,7 +12,6 @@
 - [x] Para listar os pets, obrigatoriamente precisamos informar a cidade
 - [x] Uma ONG precisa ter um endereço e um número de whastapp
 - [x] Um pet deve estar ligado a uma ONG
-- [ ] O usuário que quer adotar, entrará em contato com a ONG via whatsapp
 - [x] Todos os filtros, além da cidade, são opcionais
 - [x] Para uma ONG acessar a aplicação como admin, ela precisa estar logada
 
@@ -20,7 +19,7 @@
 - [x] Registrar ONG
 - [x] Autenticar
 - [x] Cadastrar pet
-- [ ] Cadastrar requisitos de adoção
+- [x] Cadastrar requisitos de adoção
 - [ ] Listar pets por cidade
 - [ ] Listar detalhe de cada pet
 
