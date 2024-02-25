@@ -14,7 +14,7 @@
 - [x] Um pet deve estar ligado a uma ONG
 - [ ] O usuário que quer adotar, entrará em contato com a ONG via whatsapp
 - [x] Todos os filtros, além da cidade, são opcionais
-- [ ] Para uma ONG acessar a aplicação como admin, ela precisa estar logada
+- [x] Para uma ONG acessar a aplicação como admin, ela precisa estar logada
 
 ## Layout da aplicação
 Figma(https://www.figma.com/community/file/1220006040435238030)
