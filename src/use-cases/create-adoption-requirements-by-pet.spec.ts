@@ -8,7 +8,7 @@ let usersRepository: InMemoryUsersRepository
 let petsRepository: InMemoryPetsRepository
 let sut: CreateAdoptionRequirementsByPetUseCase
 
-describe('Create Pet Use Case', () => {
+describe('Create Adoption Requirements Use Case', () => {
   beforeEach(() => {
     usersRepository = new InMemoryUsersRepository()
     petsRepository = new InMemoryPetsRepository(usersRepository)

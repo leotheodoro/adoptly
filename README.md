@@ -16,5 +16,13 @@
 - [x] Todos os filtros, além da cidade, são opcionais
 - [x] Para uma ONG acessar a aplicação como admin, ela precisa estar logada
 
+### Endpoints
+- [x] Registrar ONG
+- [x] Autenticar
+- [x] Cadastrar pet
+- [ ] Cadastrar requisitos de adoção
+- [ ] Listar pets por cidade
+- [ ] Listar detalhe de cada pet
+
 ## Layout da aplicação
 Figma(https://www.figma.com/community/file/1220006040435238030)

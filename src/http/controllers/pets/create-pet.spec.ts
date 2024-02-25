@@ -7,11 +7,12 @@ describe('Create Pet (e2e)', () => {
   it('should be able to create a pet', async () => {
     const { token } = await createAndAuthenticateUser(app)
 
+    const name = 'Pet Name'
     const response = await request(app)
       .post('/pets')
       .set('Authorization', `Bearer ${token}`)
       .send({
-        name: 'Pet',
+        name,
         bio: 'Bio Pet',
         type: 'DOG',
         age: 1,
@@ -20,6 +21,7 @@ describe('Create Pet (e2e)', () => {
         ambientType: 'Indoor',
       })
 
+    expect(response.body.name).toEqual(name)
     expect(response.statusCode).toEqual(201)
   })
 })
