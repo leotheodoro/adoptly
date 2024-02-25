@@ -20,8 +20,8 @@
 - [x] Autenticar
 - [x] Cadastrar pet
 - [x] Cadastrar requisitos de adoção
-- [ ] Listar pets por cidade
-- [ ] Listar detalhe de cada pet
+- [x] Listar pets por cidade
+- [x] Listar detalhe de cada pet
 
 ## Layout da aplicação
 Figma(https://www.figma.com/community/file/1220006040435238030)
