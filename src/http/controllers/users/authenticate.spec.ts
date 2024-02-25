@@ -1,22 +1,10 @@
 import request from 'supertest'
 import { app } from '@/app'
-import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { env } from '@/env'
-import { Server } from 'http'
-
-let server: Server
+import { describe, expect, it } from 'vitest'
 
 describe('Authenticate (e2e)', () => {
-  beforeAll(() => {
-    server = app.listen(env.PORT)
-  })
-
-  afterAll(() => {
-    server.close()
-  })
-
   it('should be able to authenticate', async () => {
-    await request(server).post('/users').send({
+    await request(app).post('/users').send({
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '123456',
@@ -27,7 +15,7 @@ describe('Authenticate (e2e)', () => {
       zipcode: '111111-111'
     })
 
-    const response = await request(server).post('/sessions').send({
+    const response = await request(app).post('/sessions').send({
       email: 'johndoe@example.com',
       password: '123456',
     })
