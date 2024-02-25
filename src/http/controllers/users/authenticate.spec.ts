@@ -12,7 +12,7 @@ describe('Authenticate (e2e)', () => {
       street: 'Street',
       city: 'City',
       state: 'SP',
-      zipcode: '111111-111'
+      zipcode: '111111-111',
     })
 
     const response = await request(app).post('/sessions').send({

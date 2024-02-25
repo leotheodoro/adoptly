@@ -12,7 +12,7 @@ describe('Register (e2e)', () => {
       street: 'Street',
       city: 'City',
       state: 'SP',
-      zipcode: '111111-111'
+      zipcode: '111111-111',
     })
 
     expect(response.statusCode).toEqual(201)
